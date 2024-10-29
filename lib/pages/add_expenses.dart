@@ -1,12 +1,18 @@
+import 'package:calc_app/models/combined_model.dart';
 import 'package:calc_app/utils/constants.dart';
+import 'package:calc_app/widgets/add_expenses/bs_category.dart';
 import 'package:calc_app/widgets/add_expenses/bs_num_keyboard.dart';
+import 'package:calc_app/widgets/add_expenses/comment_box.dart';
+import 'package:calc_app/widgets/add_expenses/date_picker.dart';
 import 'package:flutter/material.dart';
+import 'dart:developer';
 
 class AddExpenses extends StatelessWidget {
   const AddExpenses({super.key});
 
   @override
   Widget build(BuildContext context) {
+    CombinedModel cModel = CombinedModel();
     return Scaffold(
         appBar: AppBar(
           title: const Text('Agregar Gasto'),
@@ -14,19 +20,25 @@ class AddExpenses extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const BsNumKeyboard(),
+            BsNumKeyboard(cModel: cModel),
             Expanded(
               child: Container(
                 width: double.infinity,
                 decoration: Constants.sheetDecoration(
                     Theme.of(context).primaryColorDark),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Fecha: 05/09/2024'),
-                    Text('Seleccionar Categoría'),
-                    Text('Agregar Comentario (opcional)'),
-                    Expanded(child: Center(child: Text('Botón Done'))),
+                    DatePicker(cModel: cModel),
+                    BsCategory(cModel: cModel),
+                    CommentBox(cModel: cModel),
+                    Expanded(
+                        child: Center(
+                            child: GestureDetector(
+                                onTap: () {
+                                  log(cModel.comment);
+                                },
+                                child: const Text('Botón Done')))),
                   ],
                 ),
               ),

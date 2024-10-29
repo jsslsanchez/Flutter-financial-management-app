@@ -9,6 +9,9 @@ final ThemeData appTheme = ThemeData.dark().copyWith(
     backgroundColor: Colors.green[800],
     foregroundColor: Colors.white,
   ),
+  colorScheme: const ColorScheme.dark(
+    primary: Colors.green,
+  ),
   scaffoldBackgroundColor: Colors.grey[900],
   primaryColorDark: Colors.grey[850],
 );

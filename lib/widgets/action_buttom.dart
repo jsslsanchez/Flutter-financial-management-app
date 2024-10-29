@@ -21,8 +21,7 @@ class ActionButton extends StatelessWidget {
       child: ElevatedButton(
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
-          backgroundColor:
-              const Color.fromRGBO(0, 0, 0, 0), // Fondo transparente
+          backgroundColor: Colors.transparent, // Fondo transparente
           foregroundColor: color, // Color del texto e ícono
           shape: RoundedRectangleBorder(
             side: BorderSide(color: color.withOpacity(0.3)), // Borde sutil
