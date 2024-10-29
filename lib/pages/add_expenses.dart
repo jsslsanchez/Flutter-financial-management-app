@@ -1,11 +1,13 @@
+import 'package:flutter/material.dart';
 import 'package:calc_app/models/combined_model.dart';
 import 'package:calc_app/utils/constants.dart';
 import 'package:calc_app/widgets/add_expenses/bs_category.dart';
 import 'package:calc_app/widgets/add_expenses/bs_num_keyboard.dart';
 import 'package:calc_app/widgets/add_expenses/comment_box.dart';
-import 'package:calc_app/widgets/add_expenses/date_picker.dart';
-import 'package:flutter/material.dart';
 import 'dart:developer';
+
+import 'package:calc_app/widgets/add_expenses/date_picker.dart';
+import 'package:calc_app/widgets/add_expenses/save_buttom.dart';
 
 class AddExpenses extends StatelessWidget {
   const AddExpenses({super.key});
@@ -32,13 +34,7 @@ class AddExpenses extends StatelessWidget {
                     DatePicker(cModel: cModel),
                     BsCategory(cModel: cModel),
                     CommentBox(cModel: cModel),
-                    Expanded(
-                        child: Center(
-                            child: GestureDetector(
-                                onTap: () {
-                                  log(cModel.comment);
-                                },
-                                child: const Text('Botón Done')))),
+                    Expanded(child: Center(child: SaveButtom(cModel: cModel)))
                   ],
                 ),
               ),

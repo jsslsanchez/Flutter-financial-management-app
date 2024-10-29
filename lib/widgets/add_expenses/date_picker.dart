@@ -1,5 +1,5 @@
-import 'package:calc_app/models/combined_model.dart';
 import 'package:flutter/material.dart';
+import 'package:calc_app/models/combined_model.dart';
 
 class DatePicker extends StatefulWidget {
   final CombinedModel cModel;
@@ -11,6 +11,7 @@ class DatePicker extends StatefulWidget {
 
 class _DatePickerState extends State<DatePicker> {
   String selectedDay = 'Hoy';
+
   @override
   void initState() {
     if (widget.cModel.day == 0) {
@@ -31,7 +32,7 @@ class _DatePickerState extends State<DatePicker> {
     Map<String, DateTime> items = {
       'Hoy': date,
       'Ayer': date.subtract(const Duration(hours: 24)),
-      'Otro día': date,
+      'Otro día': date
     };
 
     calendar() {
@@ -48,7 +49,9 @@ class _DatePickerState extends State<DatePicker> {
             widget.cModel.month = value.month;
             widget.cModel.day = value.day;
           } else {
-            selectedDay = 'Hoy';
+            setState(() {
+              selectedDay = 'Hoy';
+            });
           }
         });
       });
@@ -60,7 +63,7 @@ class _DatePickerState extends State<DatePicker> {
           child: GestureDetector(
             onTap: () {
               setState(() {
-                selectedDay = name; // Actualizar el día seleccionado
+                selectedDay = name;
                 widget.cModel.year = date.year;
                 widget.cModel.month = date.month;
                 widget.cModel.day = date.day;
@@ -70,7 +73,7 @@ class _DatePickerState extends State<DatePicker> {
             child: DateContainWidget(
               cModel: widget.cModel,
               name: name,
-              isSelected: true,
+              isSelected: name == selectedDay,
             ),
           ),
         ),
@@ -90,13 +93,11 @@ class DateContainWidget extends StatelessWidget {
   final CombinedModel cModel;
   final String name;
   final bool isSelected;
-
-  const DateContainWidget({
-    super.key,
-    required this.cModel,
-    required this.name,
-    required this.isSelected,
-  });
+  const DateContainWidget(
+      {super.key,
+      required this.cModel,
+      required this.name,
+      required this.isSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -108,11 +109,10 @@ class DateContainWidget extends StatelessWidget {
             width: 100,
             height: 55,
             decoration: BoxDecoration(
-              color: isSelected
-                  ? Colors.green
-                  : Theme.of(context).scaffoldBackgroundColor,
-              borderRadius: BorderRadius.circular(25.0),
-            ),
+                color: isSelected
+                    ? Colors.green
+                    : Theme.of(context).scaffoldBackgroundColor,
+                borderRadius: BorderRadius.circular(25.0)),
             child: Center(
               child: Text(name),
             ),
@@ -123,7 +123,7 @@ class DateContainWidget extends StatelessWidget {
                 fit: BoxFit.fitWidth,
                 child: Text('${cModel.year}/${cModel.month}/${cModel.day}'),
               )
-            : const Text(''),
+            : const Text('')
       ],
     );
   }

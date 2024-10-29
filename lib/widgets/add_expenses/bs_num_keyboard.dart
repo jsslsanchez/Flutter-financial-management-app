@@ -1,7 +1,7 @@
-import 'package:calc_app/models/combined_model.dart';
-import 'package:calc_app/widgets/action_buttom.dart';
 import 'package:flutter/material.dart';
-import 'amount_display.dart';
+import 'package:calc_app/models/combined_model.dart';
+import 'package:calc_app/widgets/add_expenses/amount_display.dart';
+import 'package:calc_app/widgets/action_buttom.dart';
 import 'num_pad.dart';
 
 class BsNumKeyboard extends StatefulWidget {
@@ -17,7 +17,8 @@ class _BsNumKeyboardState extends State<BsNumKeyboard> {
 
   @override
   void initState() {
-    amount = widget.cModel.amount.toStringAsFixed(2);
+    amount =
+        widget.cModel.amount.toStringAsFixed(2); //cModel.amount inicializado
     super.initState();
   }
 
@@ -30,7 +31,7 @@ class _BsNumKeyboardState extends State<BsNumKeyboard> {
         child: Column(
           children: [
             const Text('Cantidad Ingresada'),
-            AmountDisplay(amount: amount),
+            AmountDisplay(amount: amount), //muestra la cantidad ingresada
           ],
         ),
       ),
@@ -66,9 +67,9 @@ class _BsNumKeyboardState extends State<BsNumKeyboard> {
                           color: Colors.red,
                           onPressed: () {
                             setState(() {
-                              amount = '0.00'; // Reinicia el amount a 0.00
-                              widget.cModel.amount =
-                                  double.tryParse(amount) ?? 0.00;
+                              amount = '0.00';
+                              widget.cModel.amount = double.tryParse(amount) ??
+                                  0.00; // Reinicia el amount a 0.00
                             });
                             Navigator.pop(
                                 context); // Pasar el valor 0.00 al cerrar
@@ -114,32 +115,35 @@ class _BsNumKeyboardState extends State<BsNumKeyboard> {
     setState(() {
       if (input == 'delete') {
         if (amount.length > 1) {
-          amount = amount.substring(0, amount.length - 1);
+          amount = amount.substring(
+              0, amount.length - 1); //Elimina el ultimo caracter
         } else {
-          amount = '0.00';
+          amount = '0.00'; //Si solo queda un digito, reinicia el valor
         }
       } else {
         if (amount == '0.00') {
-          amount = input == '.' ? '0.' : input;
+          amount = input == '.' ? '0.' : input; //Maneja el primer input
         } else {
           // Evitar múltiples puntos decimales
           if (input == '.' && amount.contains('.')) return;
-          amount += input;
+          amount += input; //añade el valor ingresado
         }
         // Limitar a dos decimales
         final parts = amount.split('.');
         if (parts.length > 1) {
           final decimalPart = parts[1];
           if (decimalPart.length > 2) {
-            amount = '${parts[0]}.${decimalPart.substring(0, 2)}';
+            amount =
+                '${parts[0]}.${decimalPart.substring(0, 2)}'; //limita los decimales
           }
         }
-        // Limitar a 14 enteros
+        // Limitar a 14 digitos enteros
         if (parts[0].length > 14) {
           amount =
               '${parts[0].substring(0, 14)}.${parts.length > 1 ? parts[1] : '00'}';
         }
       }
+      //Asignar el valor acyualizado al CombinedModel
       widget.cModel.amount = double.tryParse(amount) ?? 0.00;
     });
   }

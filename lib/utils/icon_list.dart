@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 
 class IconList {
-  var iconMap = <String, IconData>{
-    'home': Icons.home,
+  var iconMap = <String, IconData> {
     'local_gas_station_outlined': Icons.local_gas_station_outlined,
     'local_hospital_outlined': Icons.local_hospital_outlined,
     'local_dining_outlined': Icons.local_dining_outlined,
@@ -19,7 +18,8 @@ class IconList {
     'add_circle_outline': Icons.add_circle_outline,
     'adjust_outlined': Icons.adjust_outlined,
     'agriculture_outlined': Icons.agriculture_outlined,
-    'air': Icons.air_outlined,
+    'air_outlined': Icons.air_outlined,
     'airplanemode_active_outlined': Icons.airplanemode_active_outlined,
+    'home': Icons.home_outlined,
   };
 }

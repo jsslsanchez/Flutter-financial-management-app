@@ -2,41 +2,38 @@ import 'package:calc_app/models/features_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-class DBFeatures {
+class DbFeatures {
   static Database? _database;
-  static final DBFeatures db = DBFeatures._();
-
-  DBFeatures._();
+  static final DbFeatures db = DbFeatures._();
+  DbFeatures._();
 
   Future<Database> get database async {
     if (_database != null) return _database!;
     _database = await initDB();
+
     return _database!;
   }
 
-  Future<Database> initDB() async {
+  initDB() async {
     var dataBasePath = await getDatabasesPath();
     String path = join(dataBasePath, "FeatureDB.db");
 
-    return await openDatabase(
-      path,
-      version: 1,
-      onCreate: (Database db, int version) async {
-        await db.execute('''
-          CREATE TABLE Feature (
-            id INTEGER PRIMARY KEY,
-            category TEXT,
-            color TEXT,
-            icon TEXT
-          )
+    return await openDatabase(path, version: 1,
+        onCreate: (Database db, int version) async {
+      await db.execute('''
+        CREATE TABLE Feature (
+        id INTEGER PRIMARY KEY,
+        category TEXT,
+        color TEXT,
+        icon TEXT
+        )
         ''');
-      },
-    );
+    });
   }
 
   addNewFeature(FeaturesModel feature) async {
     final db = await database;
-    final response = await db.insert('Feature', feature.toJson());
+    final response = db.insert("Feature", feature.toJson());
     return response;
   }
 
@@ -48,5 +45,12 @@ class DBFeatures {
         ? response.map((e) => FeaturesModel.fromJson(e)).toList()
         : [];
     return fList;
+  }
+
+  Future<int> updateFeatures(FeaturesModel features) async {
+    final db = await database;
+    final response = db.update('Feature', features.toJson(),
+        where: 'id = ?', whereArgs: [features.id]);
+    return response;
   }
 }

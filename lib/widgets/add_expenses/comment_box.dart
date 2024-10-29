@@ -1,5 +1,5 @@
-import 'package:calc_app/models/combined_model.dart';
 import 'package:flutter/material.dart';
+import 'package:calc_app/models/combined_model.dart';
 
 class CommentBox extends StatelessWidget {
   final CombinedModel cModel;
@@ -8,8 +8,8 @@ class CommentBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String commenText = '';
-    commenText = cModel.comment;
+    String commentText = '';
+    commentText = cModel.comment;
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Row(
@@ -23,7 +23,7 @@ class CommentBox extends StatelessWidget {
           ),
           Expanded(
             child: TextFormField(
-              initialValue: commenText,
+              initialValue: commentText,
               cursorColor: Colors.green,
               keyboardType: TextInputType.text,
               maxLength: 10,
