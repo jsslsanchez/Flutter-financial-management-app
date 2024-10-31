@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-ExpensesModel FeaturesModelFromJSON(String str) =>
+ExpensesModel featuresModelFromeJson(String str) =>
     ExpensesModel.fromJson(json.decode(str));
 
-String FeaturesModelToJson(ExpensesModel data) => json.encode(data.toJson());
+String featuresModelToJson(ExpensesModel data) => json.encode(data.toJson());
 
 class ExpensesModel {
   ExpensesModel({

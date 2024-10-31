@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:calc_app/models/combined_model.dart';
 import 'package:calc_app/models/features_model.dart';
 import 'package:calc_app/providers/expenses_provider.dart';
@@ -7,6 +6,7 @@ import 'package:calc_app/utils/utils.dart';
 import 'package:calc_app/widgets/add_expenses/admin_category.dart';
 import 'package:calc_app/widgets/add_expenses/category_list.dart';
 import 'package:calc_app/widgets/add_expenses/create_category.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class BsCategory extends StatefulWidget {
@@ -23,6 +23,7 @@ class _BsCategoryState extends State<BsCategory> {
   @override
   void initState() {
     var exProvider = context.read<ExpensesProvider>();
+
     if (exProvider.flist.isEmpty) {
       for (FeaturesModel feature in catList) {
         exProvider.addNewFeature(feature);
@@ -71,9 +72,8 @@ class _BsCategoryState extends State<BsCategory> {
   }
 
   categorySelected(List<FeaturesModel> flist) {
-    void itemSelected(String category, String color, int link) {
+    void itemSelected(String category, String color) {
       setState(() {
-        widget.cModel.link = link;
         widget.cModel.category = category;
         widget.cModel.color = color;
         Navigator.pop(context);
@@ -99,7 +99,7 @@ class _BsCategoryState extends State<BsCategory> {
                 size: 20.0,
               ),
               onTap: () {
-                itemSelected(item.category, item.color, item.id!);
+                itemSelected(item.category, item.color);
               },
             );
           }),

@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
 import 'package:calc_app/widgets/balance_page/back_sheet.dart';
 import 'package:calc_app/widgets/balance_page/custom_fab.dart';
 import 'package:calc_app/widgets/balance_page/front_sheet.dart';
-import 'package:calc_app/widgets/balance_page/month_selector.dart';
+import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'dart:math';
 
@@ -56,7 +55,6 @@ class _BalancePageState extends State<BalancePage> {
               background: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  MonthSelector(),
                   Text(
                     '\$ 50,000.00',
                     style: TextStyle(

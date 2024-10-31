@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:calc_app/models/combined_model.dart';
+import 'package:flutter/material.dart';
 
 class CommentBox extends StatelessWidget {
   final CombinedModel cModel;
@@ -8,8 +8,8 @@ class CommentBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String commentText = '';
-    commentText = cModel.comment;
+    String commenText = '';
+    commenText = cModel.comment;
     return Padding(
       padding: const EdgeInsets.all(18.0),
       child: Row(
@@ -23,20 +23,24 @@ class CommentBox extends StatelessWidget {
           ),
           Expanded(
             child: TextFormField(
-              initialValue: commentText,
+              initialValue: commenText,
               cursorColor: Colors.green,
               keyboardType: TextInputType.text,
               maxLength: 10,
               decoration: InputDecoration(
                 counterText: '',
-                hintText: 'Agregar comentario (opcional)',
+                hintText: 'Agregar comentario (Opcional)',
                 hintStyle: const TextStyle(fontSize: 12.0),
                 border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(30.0)),
+                  borderRadius: BorderRadius.circular(30.0),
+                ),
                 focusedBorder: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                    borderSide: const BorderSide(color: Colors.green)),
+                  borderRadius: BorderRadius.circular(15.0),
+                  borderSide: const BorderSide(color: Colors.green),
+                ),
               ),
+              textAlign: TextAlign
+                  .center, // Esto centra el texto y el hint horizontalmente
               onChanged: (txt) {
                 cModel.comment = txt;
               },

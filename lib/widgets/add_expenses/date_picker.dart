@@ -1,5 +1,5 @@
-import 'package:flutter/material.dart';
 import 'package:calc_app/models/combined_model.dart';
+import 'package:flutter/material.dart';
 
 class DatePicker extends StatefulWidget {
   final CombinedModel cModel;
@@ -11,7 +11,6 @@ class DatePicker extends StatefulWidget {
 
 class _DatePickerState extends State<DatePicker> {
   String selectedDay = 'Hoy';
-
   @override
   void initState() {
     if (widget.cModel.day == 0) {
@@ -28,12 +27,6 @@ class _DatePickerState extends State<DatePicker> {
     var widgets = <Widget>[];
     widgets.insert(0, const Icon(Icons.date_range_outlined, size: 35.0));
     widgets.insert(1, const SizedBox(width: 4));
-
-    Map<String, DateTime> items = {
-      'Hoy': date,
-      'Ayer': date.subtract(const Duration(hours: 24)),
-      'Otro día': date
-    };
 
     calendar() {
       showDatePicker(
@@ -57,13 +50,19 @@ class _DatePickerState extends State<DatePicker> {
       });
     }
 
+    Map<String, DateTime> items = {
+      'Hoy': date,
+      'Ayer': date.subtract(const Duration(hours: 24)),
+      'Otro día': date
+    };
+
     items.forEach((name, date) {
       widgets.add(
         Expanded(
           child: GestureDetector(
             onTap: () {
               setState(() {
-                selectedDay = name;
+                selectedDay = name; // Actualizar el día seleccionado
                 widget.cModel.year = date.year;
                 widget.cModel.month = date.month;
                 widget.cModel.day = date.day;
@@ -73,7 +72,7 @@ class _DatePickerState extends State<DatePicker> {
             child: DateContainWidget(
               cModel: widget.cModel,
               name: name,
-              isSelected: name == selectedDay,
+              isSelected: name == selectedDay, // Indicar si está seleccionado
             ),
           ),
         ),
@@ -106,8 +105,8 @@ class DateContainWidget extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            width: 100,
-            height: 55,
+            width: 100, // Ancho fijo
+            height: 55, // Alto fijo
             decoration: BoxDecoration(
                 color: isSelected
                     ? Colors.green

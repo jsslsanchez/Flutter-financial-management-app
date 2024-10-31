@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
 import 'package:calc_app/models/features_model.dart';
-import 'package:calc_app/providers/expenses_provider.dart';
 import 'package:calc_app/utils/constants.dart';
 import 'package:calc_app/utils/utils.dart';
-import 'package:calc_app/widgets/add_expenses/bs_category.dart';
 import 'package:calc_app/widgets/add_expenses/create_category.dart';
+import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+
+import 'package:calc_app/providers/expenses_provider.dart';
 
 class AdminCategory extends StatelessWidget {
   const AdminCategory({super.key});
@@ -18,18 +18,21 @@ class AdminCategory extends StatelessWidget {
         itemCount: fList.length,
         itemBuilder: (context, i) {
           var item = fList[i];
-          return ListTile(
-            leading: Icon(item.icon.toIcon(),
-                size: 35.0, color: item.color.toColor()),
-            title: Text(item.category),
-            trailing: const Icon(
-              Icons.edit,
-              size: 25.0,
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: ListTile(
+              leading: Icon(item.icon.toIcon(),
+                  size: 35.0, color: item.color.toColor()),
+              title: Text(item.category),
+              trailing: const Icon(
+                Icons.edit,
+                size: 25.0,
+              ),
+              onTap: () {
+                Navigator.pop(context);
+                _createCategory(context, item);
+              },
             ),
-            onTap: () {
-              Navigator.pop(context);
-              _createCategory(context, item);
-            },
           );
         });
   }

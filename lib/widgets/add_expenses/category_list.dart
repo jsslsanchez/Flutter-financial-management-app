@@ -8,7 +8,7 @@ class CategoryList {
         icon: 'local_gas_station_outlined'),
     FeaturesModel(
         category: 'Supermercado',
-        color: '#3f9bfc',
+        color: '##3f9bfc',
         icon: 'shopping_cart_outlined'),
     FeaturesModel(
         category: 'Restaurante',

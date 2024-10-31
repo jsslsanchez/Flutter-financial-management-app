@@ -1,7 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:calc_app/pages/expenses_details.dart';
 import 'package:calc_app/utils/constants.dart';
-import 'package:calc_app/utils/page_animation_routes.dart';
+import 'package:flutter/material.dart';
 
 class BackSheet extends StatelessWidget {
   const BackSheet({super.key});
@@ -37,16 +35,7 @@ class BackSheet extends StatelessWidget {
           const VerticalDivider(
             thickness: 2.0,
           ),
-          GestureDetector(
-              onTap: () {
-                Navigator.push(
-                    context,
-                    PageAnimationRoutes(
-                        widget: const ExpensesDetails(),
-                        ejex: 0.5,
-                        ejey: -0.5));
-              },
-              child: headers('Gastos', '\$20.000.00', Colors.red)),
+          headers('Gastos', '\$20.000.00', Colors.red),
         ],
       ),
     );

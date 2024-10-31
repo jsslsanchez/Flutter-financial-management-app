@@ -1,6 +1,9 @@
 # calc_app
 
-A new Flutter project.
+first commit is the main 3 pages.
+second commit is the expenses page.
+third commit is the calendar in the expenses page.
+fourth commit is the category CRUD.
 
 ## Getting Started
 

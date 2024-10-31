@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
 import 'package:calc_app/models/features_model.dart';
 import 'package:calc_app/providers/expenses_provider.dart';
 import 'package:calc_app/utils/constants.dart';
 import 'package:calc_app/utils/icon_list.dart';
 import 'package:calc_app/utils/utils.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_material_color_picker/flutter_material_color_picker.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:provider/provider.dart';
@@ -18,10 +18,11 @@ class CreateCategory extends StatefulWidget {
 
 class _CreateCategoryState extends State<CreateCategory> {
   bool hasData = false;
-  String stcCategory = "";
+  String stcCategory = ""; // static category
   @override
   void initState() {
     if (widget.fModel.id != null) {
+      stcCategory = widget.fModel.category;
       hasData = true;
     }
     super.initState();
@@ -35,25 +36,26 @@ class _CreateCategoryState extends State<CreateCategory> {
     Iterable<FeaturesModel> contain;
     contain = fList.where((e) =>
         e.category.toLowerCase() == widget.fModel.category.toLowerCase());
+
     addCategory() {
       if (contain.isNotEmpty) {
-        //Ya existe la categoría
+        // Ya existe la categoría
         Fluttertoast.showToast(
-            msg: 'Ya existe la categoría',
+            msg: 'Ya existe esa Categoría 🤷‍♂️',
             backgroundColor: Colors.red,
             fontSize: 20.0,
             gravity: ToastGravity.CENTER);
       } else if (widget.fModel.category.isNotEmpty) {
         exProvider.addNewFeature(widget.fModel);
         Fluttertoast.showToast(
-            msg: 'Categoría creada con exito',
+            msg: 'Categoría creada con exito 👍',
             backgroundColor: Colors.green,
             fontSize: 20.0,
             gravity: ToastGravity.CENTER);
         Navigator.pop(context);
       } else {
         Fluttertoast.showToast(
-            msg: 'No olvides nombrar una categoría',
+            msg: 'No olvides nombrar una categoría 🙃',
             backgroundColor: Colors.red,
             fontSize: 20.0,
             gravity: ToastGravity.CENTER);
@@ -62,34 +64,34 @@ class _CreateCategoryState extends State<CreateCategory> {
 
     editCategory() {
       if (widget.fModel.category.toLowerCase() == stcCategory.toLowerCase()) {
-        //Puede editar
+        // Puede editar
         exProvider.updateFeatures(widget.fModel);
         Fluttertoast.showToast(
-            msg: 'Categoría editada',
+            msg: 'Categoría editada 👍',
             backgroundColor: Colors.green,
             fontSize: 20.0,
             gravity: ToastGravity.CENTER);
         Navigator.pop(context);
       } else if (contain.isNotEmpty) {
-        //Ya existe la categoria
+        // Ya existe la categoría
         Fluttertoast.showToast(
-            msg: 'Ya existe la categoria',
+            msg: 'Ya existe esa Categoría 🤷‍♂️',
             backgroundColor: Colors.red,
             fontSize: 20.0,
             gravity: ToastGravity.CENTER);
       } else if (widget.fModel.category.isNotEmpty) {
         exProvider.updateFeatures(widget.fModel);
         Fluttertoast.showToast(
-            msg: 'Categoría editada',
+            msg: 'Categoría editada 👍',
             backgroundColor: Colors.green,
             fontSize: 20.0,
             gravity: ToastGravity.CENTER);
         Navigator.pop(context);
-        //Procede a editar cambios
+        // Procede  a editar cambios
       } else {
-        //Debe dar nombre a la categoria
+        // Debe dar nombre a la categoría
         Fluttertoast.showToast(
-            msg: 'No olvides nombrar una categoria',
+            msg: 'No olvides nombrar una categoría 🙃',
             backgroundColor: Colors.red,
             fontSize: 20.0,
             gravity: ToastGravity.CENTER);
@@ -102,26 +104,28 @@ class _CreateCategoryState extends State<CreateCategory> {
         child: Column(
           children: [
             Container(
-                padding: EdgeInsets.only(bottom: viewInsets),
-                child: ListTile(
-                  trailing: const Icon(
-                    Icons.text_fields_outlined,
-                    size: 35.0,
-                  ),
-                  title: TextFormField(
-                      textAlign: TextAlign.center,
-                      textAlignVertical: TextAlignVertical.center,
-                      initialValue: widget.fModel.category,
-                      decoration: InputDecoration(
-                          hintText: 'Nombra una categoría',
-                          border: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(30.0))),
-                      onChanged: (value) {
-                        setState(() {
-                          widget.fModel.category = value;
-                        });
-                      }),
-                )),
+              padding: EdgeInsets.only(bottom: viewInsets / 3),
+              child: ListTile(
+                trailing: const Icon(
+                  Icons.text_fields_outlined,
+                  size: 35.0,
+                ),
+                title: TextFormField(
+                  textAlign: TextAlign.center,
+                  textAlignVertical: TextAlignVertical.center,
+                  initialValue: widget.fModel.category,
+                  decoration: InputDecoration(
+                      hintText: 'Nombra una categoría',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(30.0))),
+                  onChanged: (value) {
+                    setState(() {
+                      widget.fModel.category = value;
+                    });
+                  },
+                ),
+              ),
+            ),
             ListTile(
               onTap: () => selectColor(),
               trailing: CircleColor(
@@ -159,10 +163,11 @@ class _CreateCategoryState extends State<CreateCategory> {
             Row(
               children: [
                 Expanded(
-                    child: GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: Constants.customButton(
-                            Colors.transparent, Colors.red, 'Cancelar'))),
+                  child: GestureDetector(
+                      onTap: () => Navigator.pop(context),
+                      child: Constants.customButton(
+                          Colors.transparent, Colors.red, 'Cancelar')),
+                ),
                 Expanded(
                   child: GestureDetector(
                       onTap: () => {(hasData) ? editCategory() : addCategory()},
