@@ -1,9 +1,8 @@
-// main.dart
+import 'package:flutter/material.dart';
 import 'package:calc_app/pages/home_page.dart';
 import 'package:calc_app/providers/expenses_provider.dart';
-import 'package:calc_app/themes/theme.dart';
-import 'package:flutter/material.dart';
 import 'package:calc_app/providers/ui_provider.dart';
+import 'package:calc_app/themes/theme.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:provider/provider.dart';
 

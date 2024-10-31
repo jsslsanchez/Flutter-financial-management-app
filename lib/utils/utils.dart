@@ -1,5 +1,5 @@
-import 'package:calc_app/utils/icon_list.dart';
 import 'package:flutter/material.dart';
+import 'package:calc_app/utils/icon_list.dart';
 
 extension ColorExtension on String {
   toColor() {

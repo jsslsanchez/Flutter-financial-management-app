@@ -1,7 +1,7 @@
+import 'package:flutter/material.dart';
 import 'package:calc_app/pages/add_entries.dart';
 import 'package:calc_app/pages/add_expenses.dart';
 import 'package:calc_app/utils/page_animation_routes.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_speed_dial/flutter_speed_dial.dart';
 
 class CustomFAB extends StatelessWidget {

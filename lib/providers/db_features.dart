@@ -2,14 +2,13 @@ import 'package:calc_app/models/features_model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
-class DBFeatures {
+class DbFeatures {
   static Database? _database;
-  static final DBFeatures db = DBFeatures._();
-  DBFeatures._();
+  static final DbFeatures db = DbFeatures._();
+  DbFeatures._();
 
   Future<Database> get database async {
     if (_database != null) return _database!;
-
     _database = await initDB();
 
     return _database!;
@@ -34,7 +33,7 @@ class DBFeatures {
 
   addNewFeature(FeaturesModel feature) async {
     final db = await database;
-    final response = db.insert('Feature', feature.toJson());
+    final response = db.insert("Feature", feature.toJson());
     return response;
   }
 
@@ -45,7 +44,6 @@ class DBFeatures {
     List<FeaturesModel> fList = response.isNotEmpty
         ? response.map((e) => FeaturesModel.fromJson(e)).toList()
         : [];
-
     return fList;
   }
 

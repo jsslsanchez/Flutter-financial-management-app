@@ -30,4 +30,11 @@ class Constants {
     return const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(25.0)));
   }
+
+  static sheetBoxDecoration(Color color) {
+    return BoxDecoration(
+        color: color,
+        borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30.0), topRight: Radius.circular(30.0)));
+  }
 }
