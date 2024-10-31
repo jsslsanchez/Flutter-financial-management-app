@@ -3,7 +3,6 @@ import 'package:calc_app/models/features_model.dart';
 import 'package:calc_app/providers/expenses_provider.dart';
 import 'package:calc_app/utils/constants.dart';
 import 'package:calc_app/utils/utils.dart';
-import 'package:calc_app/widgets/add_expenses/bs_category.dart';
 import 'package:calc_app/widgets/add_expenses/create_category.dart';
 import 'package:provider/provider.dart';
 

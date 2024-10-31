@@ -1,10 +1,9 @@
+import 'package:calc_app/providers/entries_provider.dart';
+import 'package:calc_app/widgets/add_entries/create_category.dart';
 import 'package:flutter/material.dart';
 import 'package:calc_app/models/features_model.dart';
-import 'package:calc_app/providers/expenses_provider.dart';
 import 'package:calc_app/utils/constants.dart';
 import 'package:calc_app/utils/utils.dart';
-import 'package:calc_app/widgets/add_expenses/bs_category.dart';
-import 'package:calc_app/widgets/add_expenses/create_category.dart';
 import 'package:provider/provider.dart';
 
 class AdminCategory extends StatelessWidget {
@@ -12,7 +11,7 @@ class AdminCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final fList = context.watch<ExpensesProvider>().flist;
+    final fList = context.watch<EntriesProvider>().flist;
 
     return ListView.builder(
         itemCount: fList.length,

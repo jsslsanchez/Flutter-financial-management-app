@@ -1,6 +1,6 @@
+import 'package:calc_app/providers/entries_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:calc_app/models/combined_model.dart';
-import 'package:calc_app/providers/expenses_provider.dart';
 import 'package:calc_app/providers/ui_provider.dart';
 import 'package:calc_app/utils/constants.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -12,20 +12,20 @@ class SaveButtom extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final exProvider = context.read<ExpensesProvider>();
+    final exProvider = context.read<EntriesProvider>();
     final uiProvider = context.read<UIProvider>();
 
     return GestureDetector(
         onTap: () {
           if (cModel.amount != 0.00 && cModel.link != null) {
-            exProvider.addNewExpense(cModel);
+            exProvider.addNewEntrie(cModel);
             Fluttertoast.showToast(
-                msg: 'Gasto agregado', backgroundColor: Colors.green);
+                msg: 'Ingreso agregado', backgroundColor: Colors.green);
             uiProvider.bnbIndex = 0;
             Navigator.pop(context);
           } else if (cModel.amount == 0.0) {
             Fluttertoast.showToast(
-                msg: 'No olvides agregar un gasto',
+                msg: 'No olvides agregar un ingreso',
                 backgroundColor: Colors.red);
           } else {
             Fluttertoast.showToast(

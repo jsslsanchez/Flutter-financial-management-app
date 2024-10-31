@@ -1,12 +1,12 @@
+import 'package:calc_app/providers/entries_provider.dart';
+import 'package:calc_app/widgets/add_entries/admin_category.dart';
+import 'package:calc_app/widgets/add_entries/category_list.dart';
+import 'package:calc_app/widgets/add_entries/create_category.dart';
 import 'package:flutter/material.dart';
 import 'package:calc_app/models/combined_model.dart';
 import 'package:calc_app/models/features_model.dart';
-import 'package:calc_app/providers/expenses_provider.dart';
 import 'package:calc_app/utils/constants.dart';
 import 'package:calc_app/utils/utils.dart';
-import 'package:calc_app/widgets/add_expenses/admin_category.dart';
-import 'package:calc_app/widgets/add_expenses/category_list.dart';
-import 'package:calc_app/widgets/add_expenses/create_category.dart';
 import 'package:provider/provider.dart';
 
 class BsCategory extends StatefulWidget {
@@ -22,7 +22,7 @@ class _BsCategoryState extends State<BsCategory> {
   final FeaturesModel fModel = FeaturesModel();
   @override
   void initState() {
-    var exProvider = context.read<ExpensesProvider>();
+    var exProvider = context.read<EntriesProvider>();
     if (exProvider.flist.isEmpty) {
       for (FeaturesModel feature in catList) {
         exProvider.addNewFeature(feature);
@@ -33,7 +33,7 @@ class _BsCategoryState extends State<BsCategory> {
 
   @override
   Widget build(BuildContext context) {
-    final featureList = context.watch<ExpensesProvider>().flist;
+    final featureList = context.watch<EntriesProvider>().flist;
     bool hasData = false;
 
     if (widget.cModel.category != 'Selecciona Categoría') {

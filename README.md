@@ -5,6 +5,7 @@ second commit is the expenses page.
 third commit is the calendar in the expenses page.
 fourth commit is the category CRUD.
 fifth commit is the category list with de sum of all expenses.
+sixth commit is the CRUD entries page.
 
 ## Getting Started
 

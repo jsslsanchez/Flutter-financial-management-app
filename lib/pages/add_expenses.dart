@@ -4,7 +4,6 @@ import 'package:calc_app/utils/constants.dart';
 import 'package:calc_app/widgets/add_expenses/bs_category.dart';
 import 'package:calc_app/widgets/add_expenses/bs_num_keyboard.dart';
 import 'package:calc_app/widgets/add_expenses/comment_box.dart';
-import 'dart:developer';
 
 import 'package:calc_app/widgets/add_expenses/date_picker.dart';
 import 'package:calc_app/widgets/add_expenses/save_buttom.dart';

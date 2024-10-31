@@ -1,6 +1,6 @@
+import 'package:calc_app/providers/entries_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:calc_app/models/features_model.dart';
-import 'package:calc_app/providers/expenses_provider.dart';
 import 'package:calc_app/utils/constants.dart';
 import 'package:calc_app/utils/icon_list.dart';
 import 'package:calc_app/utils/utils.dart';
@@ -29,8 +29,8 @@ class _CreateCategoryState extends State<CreateCategory> {
 
   @override
   Widget build(BuildContext context) {
-    final fList = context.watch<ExpensesProvider>().flist;
-    final exProvider = context.read<ExpensesProvider>();
+    final fList = context.watch<EntriesProvider>().flist;
+    final exProvider = context.read<EntriesProvider>();
     final viewInsets = MediaQuery.of(context).viewInsets.bottom;
     Iterable<FeaturesModel> contain;
     contain = fList.where((e) =>

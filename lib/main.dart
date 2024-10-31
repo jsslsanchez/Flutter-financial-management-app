@@ -1,3 +1,4 @@
+import 'package:calc_app/providers/entries_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:calc_app/pages/home_page.dart';
 import 'package:calc_app/providers/expenses_provider.dart';
@@ -8,7 +9,8 @@ import 'package:provider/provider.dart';
 
 void main() => runApp(MultiProvider(providers: [
       ChangeNotifierProvider(create: (_) => UIProvider()),
-      ChangeNotifierProvider(create: (_) => ExpensesProvider())
+      ChangeNotifierProvider(create: (_) => ExpensesProvider()),
+      ChangeNotifierProvider(create: (_) => EntriesProvider())
     ], child: const MyApp()));
 
 class MyApp extends StatelessWidget {

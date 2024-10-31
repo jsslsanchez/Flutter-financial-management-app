@@ -1,6 +1,6 @@
+import 'package:calc_app/widgets/add_entries/amount_display.dart';
 import 'package:flutter/material.dart';
 import 'package:calc_app/models/combined_model.dart';
-import 'package:calc_app/widgets/add_expenses/amount_display.dart';
 import 'package:calc_app/widgets/action_buttom.dart';
 import 'num_pad.dart';
 

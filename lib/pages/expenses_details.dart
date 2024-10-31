@@ -1,11 +1,8 @@
 import 'package:calc_app/providers/expenses_provider.dart';
 import 'package:flutter/material.dart';
-import 'package:calc_app/models/combined_model.dart';
-import 'package:calc_app/providers/expenses_provider.dart';
 import 'package:calc_app/utils/constants.dart';
 import 'package:calc_app/utils/math_operations.dart';
 import 'package:calc_app/utils/utils.dart';
-import 'package:intl/intl.dart';
 import 'package:logger/logger.dart';
 import 'package:provider/provider.dart';
 
